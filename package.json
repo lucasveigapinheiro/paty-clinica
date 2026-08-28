@@ -1,19 +1,7 @@
 {
   "name": "labessie-clinica",
-  "version": "1.0.0",
-  "description": "Sistema de gestão da Clínica Estética Labessiê",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "migrate": "node migrate.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@libsql/client": "^0.14.0",
-    "cors": "^2.8.5",
-    "express": "^4.21.2"
-  },
-  "type": "commonjs"
+  "version": "2.0.0",
+  "description": "Sistema de gestão da Clínica Estética Labessiê (site estático, dados no navegador)",
+  "private": true,
+  "license": "ISC"
 }
