@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações | Clínica Estética Labessiê</title>
+    <link rel="stylesheet" href="../Estilos/configurações.css">
+    <!-- Importação de Fontes Elegantes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Menu Lateral (Sidebar) -->
+    <aside class="sidebar">
+        <div class="brand">Labessiê</div>
+        <ul class="nav-menu">
+            <!-- NOTA: O href agora aponta para o teu outro ficheiro html -->
+            <li><a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Visão Geral</a></li>
+            <li><a href="pacientes.html" class="nav-link"><i class="fas fa-users"></i> Pacientes</a></li>
+            <li><a href="agenda.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+            <!-- O menu Configurações está ativo nesta página -->
+            <li><a href="configurações.html" class="nav-link active"><i class="fas fa-cog"></i> Configurações</a></li>
+        </ul>
+    </aside>
+
+    <!-- Área Principal -->
+    <main class="main-content">
+
+        <header class="header">
+            <div class="greeting">
+                <h1 class="serif-font">Configurações do Sistema</h1>
+                <p>Gere as preferências, integrações e perfil da tua clínica.</p>
+            </div>
+            <div class="profile-area">
+                <span style="font-weight: 500;">Patrícia</span>
+                <div class="profile-img"></div>
+            </div>
+        </header>
+
+        <!-- Container das Configurações -->
+        <div class="settings-container">
+
+            <!-- Cartão 1: Perfil -->
+            <div class="settings-card">
+                <h3 class="serif-font"><i class="fas fa-clinic-medical" style="margin-right: 10px;"></i> Perfil da
+                    Clínica</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome da Clínica</label>
+                        <input type="text" class="form-input" value="Clínica Estética Labessiê">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone Principal (WhatsApp)</label>
+                        <input type="text" id="input-config-whatsapp" class="form-input" value="+55 (11) 99999-9999"
+                            inputmode="numeric" maxlength="18">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Morada / Endereço Completo</label>
+                    <input type="text" class="form-input" value="Av. Exemplo de Luxo, 123 - Sala 405">
+                </div>
+                <button class="btn-primary" onclick="salvarConfiguracoes()"><i class="fas fa-save"></i> Guardar
+                    Alterações</button>
+            </div>
+
+            <!-- Cartão 2: Redes Sociais -->
+            <!-- Cartão 2: Redes Sociais e Acessos -->
+            <div class="settings-card" style="border-left-color: var(--accent-gold);">
+                <h3 class="serif-font"><i class="fas fa-share-alt" style="margin-right: 10px;"></i> Redes Sociais e
+                    Acessos Rápidos
+                </h3>
+                <p style="margin-bottom: 20px; font-size: 0.95rem; color: #666; line-height: 1.5;">
+                    Acede diretamente aos canais de comunicação e à agenda oficial da clínica num novo separador.
+                </p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+
+                    <!-- Botão WhatsApp -->
+                    <button class="btn-social btn-whatsapp"
+                        onclick="window.open('https://wa.me/5511930957162', '_blank')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+
+                    <!-- Botão Instagram -->
+                    <button class="btn-social btn-instagram"
+                        onclick="window.open('https://instagram.com/clinica_labessie', '_blank')">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </button>
+
+                    <!-- Botão Facebook -->
+                    <button class="btn-social btn-facebook"
+                        onclick="window.open('https://www.facebook.com/share/1Mqy5DgTwd/', '_blank')">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+
+                    <!-- Botão Google Agenda -->
+                    <button class="btn-social btn-agenda"
+                        onclick="window.open('https://calendar.google.com/', '_blank')">
+                        <i class="fas fa-calendar-alt"></i> Google Agenda
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Cartão 3: Sistema e Suporte -->
+            <div class="settings-card" style="border-left-color: var(--text-dark);">
+                <h3 class="serif-font"><i class="fas fa-laptop-medical" style="margin-right: 10px;"></i> Sistema e
+                    Suporte</h3>
+
+                <div
+                    style="background-color: var(--bg-nude); padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <p style="font-weight: 600; margin-bottom: 5px;">Plano Atual: Sistema de Gestão Premium</p>
+                        <p style="font-size: 0.85rem; color: #666;">Inclui Gestão Completa de Pacientes e
+                            Backups Automáticos.</p>
+                    </div>
+                    <span
+                        style="background-color: #25D366; color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Ativo</span>
+                </div>
+
+                <!-- Botão atualizado com redirecionamento para o teu WhatsApp -->
+                <button class="btn-primary" style="background-color: var(--text-dark);"
+                    onclick="window.open('https://wa.me/5511930957162?text=Olá!%20Preciso%20de%20suporte%20técnico%20no%20sistema%20da%20clínica.', '_blank')">
+                    <i class="fas fa-headset"></i> Contactar Suporte Técnico
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Elemento para Notificação (Toast) -->
+    <div id="toast" class="toast-container">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="toast-message">Mensagem aqui</span>
+    </div>
+
+    <script src="../JavaScript/configurações.js"></script>
+</body>
+
+</html>

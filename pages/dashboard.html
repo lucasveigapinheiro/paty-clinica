@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Clínica Estética</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../Estilos/dashboard.css">
+    <!-- Importação de Fontes Elegantes (Playfair para títulos, Montserrat para textos) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones da FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">Labessiê</div>
+        <ul class="nav-menu">
+            <li><a href="#" class="nav-link active"><i class="fas fa-th-large"></i> Visão Geral</a></li>
+            <li><a href="pacientes.html" class="nav-link"><i class="fas fa-users"></i> Pacientes</a></li>
+            <li><a href="agenda.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+            <li><a href="configurações.html" class="nav-link"><i class="fas fa-cog"></i> Configurações</a></li>
+        </ul>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- CABEÇALHO -->
+        <header class="header">
+            <div class="greeting">
+                <!-- Adicionamos o ID aqui para o JavaScript encontrar -->
+                <h1 id="texto-saudacao">Bom dia, Doutora.</h1>
+                <p>Aqui está o resumo da sua clínica hoje.</p>
+            </div>
+            <div class="profile-area">
+                <span style="font-weight: 500;">Patrícia</span>
+                <div class="profile-img"></div>
+            </div>
+        </header>
+
+        <!-- GRID DE CARTÕES (DASHBOARD) -->
+        <div class="dashboard-grid">
+
+            <!-- Cartão 1: Pedido pelo usuário -->
+            <div class="card" onclick="openPage('Relatório de Clientes')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3 class="card-title">Relatório de pacientes</h3>
+                <p class="card-desc">Visualize métricas, retenção e dados demográficos dos seus pacientes.</p>
+                <i class="fas fa-arrow-right card-arrow"></i>
+            </div>
+
+            <!-- Cartão 2: Pedido pelo usuário -->
+            <div class="card" onclick="openPage('Formulário de Anamnese')">
+                <div class="card-icon">
+                    <i class="fas fa-file-medical"></i>
+                </div>
+                <h3 class="card-title">Formulário de Anamnese</h3>
+                <p class="card-desc">Crie e acesse as fichas clínicas e histórico de saúde dos pacientes.</p>
+                <i class="fas fa-arrow-right card-arrow"></i>
+            </div>
+
+            <!-- Cartão 3: Pedido pelo usuário -->
+            <a href="pacientes.html" style="text-decoration: none; color: inherit;">
+                <div class="card" onclick="openPage('Clientes Registrados')">
+                    <div class="card-icon">
+                        <i class="fas fa-address-book"></i>
+                    </div>
+
+                    <h3 class="card-title">Pacientes Registrados</h3>
+                    <p class="card-desc">Gerencie o banco de dados, contatos e perfil de todos os pacientes.</p>
+                    <i class="fas fa-arrow-right card-arrow"></i>
+                </div>
+            </a>
+
+            <!-- Cartão 4: Bônus de Especialista -->
+            <div class="card" onclick="window.location.href='agenda.html'">
+                <div class="card-icon">
+                    <i class="far fa-calendar-check"></i>
+                </div>
+                <h3 class="card-title">Agenda de Consultas</h3>
+                <p class="card-desc">Controle horários, retornos de procedimentos e encaixes do dia.</p>
+                <i class="fas fa-arrow-right card-arrow"></i>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Elemento para notificação (Toast) -->
+    <div id="toast" class="toast-container">
+        <i class="fas fa-info-circle toast-icon"></i>
+        <span id="toast-message">Mensagem aqui</span>
+    </div>
+
+    <script src="../JavaScript/dashboard.js"></script>
+</body>
+
+</html>

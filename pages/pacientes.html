@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes | Clínica Estética Labessiê</title>
+
+    <!-- Fontes e Ícones -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../Estilos/pacientes.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">Labessiê</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Visão Geral</a></li>
+            <li><a href="pacientes.html" class="nav-link active"><i class="fas fa-users"></i> Pacientes</a></li>
+            <li><a href="agenda.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+            <li><a href="configurações.html" class="nav-link"><i class="fas fa-cog"></i> Configurações</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="greeting">
+                <h1 class="serif-font">Gestão de Pacientes</h1>
+                <p>Base de dados de clientes da clínica.</p>
+            </div>
+            <div class="profile-area">
+                <span style="font-weight: 500;">Patrícia</span>
+                <div class="profile-img"></div>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar paciente por nome, CPF ou telefone..."
+                    oninput="filtrarPacientes()">
+            </div>
+            <button class="btn-add" onclick="abrirModalPaciente()">
+                <i class="fas fa-user-plus"></i> Novo Paciente
+            </button>
+        </div>
+
+        <div id="lista-pacientes" class="patient-list">
+            <div id="loading-state" style="text-align: center; color: var(--primary-burgundy); padding: 2rem;">
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+                <p style="margin-top: 10px;">A procurar pacientes no banco de dados...</p>
+            </div>
+        </div>
+
+        <div class="pagination-container" id="pagination-controls" style="display: none;">
+            <button id="btn-prev" class="btn-page" onclick="mudarPagina(-1)"><i class="fas fa-chevron-left"></i>
+                Anterior</button>
+            <span id="page-info" class="page-info">Página 1 de 1</span>
+            <button id="btn-next" class="btn-page" onclick="mudarPagina(1)">Próxima <i
+                    class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <!-- ==========================================
+         MODAL: CADASTRO GERAL DO PACIENTE
+         ========================================== -->
+    <div id="modal-paciente" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="fecharModalPaciente()"><i class="fas fa-times"></i></button>
+            <h2 class="serif-font" style="color: var(--primary-burgundy); margin-bottom: 1.5rem;">Cadastrar Novo
+                Paciente</h2>
+
+            <form id="form-paciente" onsubmit="salvarPaciente(event)">
+
+                <div class="row-inputs">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" id="input-pac-nome" class="form-input" placeholder="Ex: Ana Clara Silva"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input type="text" id="input-pac-cpf" class="form-input" placeholder="000.000.000-00"
+                            inputmode="numeric" maxlength="14" required>
+                    </div>
+                </div>
+
+                <div class="row-inputs">
+                    <div class="form-group">
+                        <label>WhatsApp (apenas números)</label>
+                        <input type="text" id="input-pac-whatsapp" class="form-input" placeholder="+55 (11) 99999-9999"
+                            inputmode="numeric" maxlength="18" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Data de Nascimento</label>
+                        <input type="date" id="input-pac-nascimento" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Foto de Perfil do Paciente</label>
+                    <input type="file" id="input-pac-foto" class="form-input" accept="image/*">
+                    <small style="color: #888; font-size: 0.8rem; margin-top: 5px; display: block;">
+                        * Opcional. Ficheiros JPG ou PNG.
+                    </small>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="input-pac-termo" style="width: 20px; height: 20px;">
+                    <label for="input-pac-termo" style="margin-bottom: 0; font-weight: 600;">O Termo de Anamnese já foi
+                        preenchido por este paciente?</label>
+                </div>
+
+                <button type="submit" class="btn-add" style="width: 100%; justify-content: center; font-size: 1rem;">
+                    <i class="fas fa-save"></i> Guardar Ficha do Paciente
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="../JavaScript/pacientes.js"></script>
+
+</html>
