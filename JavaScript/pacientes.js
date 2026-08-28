@@ -6,7 +6,7 @@ let pacientesDoBanco = [];
 let pacientesFiltrados = [];
 let paginaAtual = 1;
 const itensPorPagina = 10;
-const API_URL = '/api/pacientes';
+// Dados guardados no navegador (ver JavaScript/store.js)
 
 function cleanNumber(value) {
     return String(value || '').replace(/\D/g, '');
@@ -46,13 +46,12 @@ function aplicarMascaraWhatsapp(event) {
 
 async function buscarPacientesAPI() {
     try {
-        const resposta = await fetch(API_URL);
-        if (!resposta.ok) throw new Error("Backend não está a responder.");
-        pacientesDoBanco = await resposta.json();
+        pacientesDoBanco = Store.pacientes.listar();
     } catch (erro) {
-        console.warn("Aviso: Falha ao ligar à API SQLite. O Banco pode estar vazio no momento.");
+        console.warn("Aviso: não foi possível ler os pacientes guardados.");
+        pacientesDoBanco = [];
     }
-    pacientesFiltrados = [...pacientesDoBanco].reverse();
+    pacientesFiltrados = [...pacientesDoBanco];
     processarPaginacaoERenderizar();
 }
 
@@ -109,24 +108,15 @@ async function salvarPaciente(event) {
         observacoesMedicas: ""
     };
 
-    novoPaciente.id = Date.now(); // ID Temporário
-
+    let registro;
     try {
-        const resposta = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(novoPaciente)
-        });
-
-        if (resposta.ok) {
-            const dadosDeVolta = await resposta.json();
-            if (dadosDeVolta.id) novoPaciente.id = dadosDeVolta.id;
-        }
+        registro = Store.pacientes.adicionar(novoPaciente);
     } catch (erro) {
-        console.warn("API offline. O paciente foi adicionado apenas localmente na memória.");
+        alert("Erro ao salvar o paciente. O armazenamento do navegador pode estar cheio.");
+        return;
     }
 
-    pacientesDoBanco.unshift(novoPaciente);
+    pacientesDoBanco.unshift(registro);
     document.getElementById('searchInput').value = "";
     filtrarPacientes();
     fecharModalPaciente();

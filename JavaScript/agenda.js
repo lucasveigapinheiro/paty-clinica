@@ -2,8 +2,7 @@ let dataAtual = new Date();
 let diaSelecionado = new Date();
 const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
-// URL base do nosso servidor Node.js
-const API_URL = '/api/agendamentos';
+// Dados guardados no navegador (ver JavaScript/store.js)
 
 // 1. Função para formatar a data para o Banco de Dados (ex: "2026-05-15")
 function formatarDataISO(data) {
@@ -17,9 +16,7 @@ async function buscarEventos() {
     container.innerHTML = '<p style="text-align:center; color:#999;">Carregando...</p>';
 
     try {
-        // Faz o pedido GET ao nosso servidor Node.js
-        const response = await fetch(`${API_URL}/${dataString}`);
-        const agendamentos = await response.json();
+        const agendamentos = Store.agendamentos.listarPorData(dataString);
 
         container.innerHTML = '';
 
@@ -60,8 +57,8 @@ async function buscarEventos() {
                     `;
         });
     } catch (error) {
-        console.error("Erro ao buscar no SQLite:", error);
-        container.innerHTML = '<p style="text-align:center; color:red;">Erro ao conectar com o banco de dados.</p>';
+        console.error("Erro ao ler os agendamentos:", error);
+        container.innerHTML = '<p style="text-align:center; color:red;">Erro ao carregar os agendamentos.</p>';
     }
 }
 
@@ -78,18 +75,13 @@ async function salvarNoBanco(event) {
     };
 
     try {
-        // Faz o pedido POST para o servidor gravar os dados
-        await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(novoAgendamento)
-        });
+        Store.agendamentos.adicionar(novoAgendamento);
 
         fecharModal();
         renderizarCalendario(); // Atualiza os pontinhos no calendário
         buscarEventos(); // Recarrega a lista do dia
     } catch (error) {
-        alert("Erro ao salvar no banco de dados.");
+        alert("Erro ao salvar o agendamento.");
     }
 }
 
@@ -97,7 +89,7 @@ async function salvarNoBanco(event) {
 async function deletarAgendamento(id) {
     if (confirm("Tem certeza que deseja cancelar esta consulta?")) {
         try {
-            await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+            Store.agendamentos.remover(id);
             renderizarCalendario(); // Atualiza os pontinhos no calendário
             buscarEventos(); // Recarrega a tela
         } catch (error) {
@@ -113,8 +105,7 @@ async function buscarDatasComEvento() {
     const ano = dataAtual.getFullYear();
     const mes = dataAtual.getMonth() + 1;
     try {
-        const response = await fetch(`${API_URL}/datas/${ano}/${mes}`);
-        datasComEvento = await response.json();
+        datasComEvento = Store.agendamentos.datasDoMes(ano, mes);
     } catch (error) {
         datasComEvento = [];
     }
