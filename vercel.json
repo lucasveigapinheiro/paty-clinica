@@ -1,5 +1,9 @@
 {
-  "redirects": [
-    { "source": "/", "destination": "/pages/dashboard.html", "permanent": false }
+  "builds": [
+    { "src": "**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/", "status": 307, "headers": { "Location": "/pages/dashboard.html" } },
+    { "handle": "filesystem" }
   ]
 }

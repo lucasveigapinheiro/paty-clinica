@@ -1,7 +1,0 @@
-{
-  "name": "labessie-clinica",
-  "version": "2.0.0",
-  "description": "Sistema de gestão da Clínica Estética Labessiê (site estático, dados no navegador)",
-  "private": true,
-  "license": "ISC"
-}
