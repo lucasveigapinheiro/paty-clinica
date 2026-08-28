@@ -6,7 +6,7 @@ let pacientesDoBanco = [];
 let pacientesFiltrados = [];
 let paginaAtual = 1;
 const itensPorPagina = 10;
-const API_URL = 'http://localhost:3002/api/pacientes';
+const API_URL = '/api/pacientes';
 
 function cleanNumber(value) {
     return String(value || '').replace(/\D/g, '');

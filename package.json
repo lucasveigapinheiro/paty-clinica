@@ -4,15 +4,16 @@
   "description": "Sistema de gestão da Clínica Estética Labessiê",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "migrate": "node migrate.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^4.22.1",
-    "sqlite3": "^5.1.7"
+    "@libsql/client": "^0.14.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
   },
   "type": "commonjs"
 }

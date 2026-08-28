@@ -3,7 +3,7 @@ let diaSelecionado = new Date();
 const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 // URL base do nosso servidor Node.js
-const API_URL = 'http://localhost:3002/api/agendamentos';
+const API_URL = '/api/agendamentos';
 
 // 1. Função para formatar a data para o Banco de Dados (ex: "2026-05-15")
 function formatarDataISO(data) {
