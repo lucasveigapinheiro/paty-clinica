@@ -1,5 +1,7 @@
 # Sistema para Clínica de Estética
 
+![Painel da clínica — visão geral do dia](paty-preview.jpg)
+
 Painel administrativo para uma clínica de estética, com visão geral do dia, agenda de atendimentos e cadastro de pacientes.
 
 🔗 **Demo:** [paty-clinica.vercel.app](https://paty-clinica.vercel.app/pages/dashboard.html)
